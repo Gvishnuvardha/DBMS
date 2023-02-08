@@ -1,0 +1,131 @@
+mysql> create database degree_students;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use degree_students;
+Database changed
+mysql> create table degree_students(regno int(10),studentname varchar(15),gender char(1),dateofbirth DATE,mobilenumber int(9),city varchar(15));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc degree_students;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| regno        | int(10)     | YES  |     | NULL    |       |
+| studentname  | varchar(15) | YES  |     | NULL    |       |
+| gender       | char(1)     | YES  |     | NULL    |       |
+| dateofbirth  | date        | YES  |     | NULL    |       |
+| mobilenumber | int(9)      | YES  |     | NULL    |       |
+| city         | varchar(15) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.06 sec)
+
+mysql> alter degree_students
+    -> alter table degree_students
+    -> ADD PRIMARY KEY(regno);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'degree_students
+alter table degree_students
+ADD PRIMARY KEY(regno)' at line 1
+mysql> alter table degree_students
+    -> ADD PRIMARY KEY(Regno);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc degree_students;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| regno        | int(10)     | NO   | PRI | 0       |       |
+| studentname  | varchar(15) | YES  |     | NULL    |       |
+| gender       | char(1)     | YES  |     | NULL    |       |
+| dateofbirth  | date        | YES  |     | NULL    |       |
+| mobilenumber | int(9)      | YES  |     | NULL    |       |
+| city         | varchar(15) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.06 sec)
+
+mysql> alter table degree_students
+    -> ADD CHECK (gender = 'm' or 'f')
+    -> describe degree_students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'describe degree_students' at line 3
+mysql> desc degree_students;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| regno        | int(10)     | NO   | PRI | 0       |       |
+| studentname  | varchar(15) | YES  |     | NULL    |       |
+| gender       | char(1)     | YES  |     | NULL    |       |
+| dateofbirth  | date        | YES  |     | NULL    |       |
+| mobilenumber | int(9)      | YES  |     | NULL    |       |
+| city         | varchar(15) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.06 sec)
+
+mysql> alter table degree_students
+    -> modify studentname varchar(15) primary key;
+ERROR 1068 (42000): Multiple primary key defined
+mysql> desc degree_students;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| regno        | int(10)     | NO   | PRI | 0       |       |
+| studentname  | varchar(15) | YES  |     | NULL    |       |
+| gender       | char(1)     | YES  |     | NULL    |       |
+| dateofbirth  | date        | YES  |     | NULL    |       |
+| mobilenumber | int(9)      | YES  |     | NULL    |       |
+| city         | varchar(15) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.06 sec)
+
+mysql> use hospital;
+Database changed
+mysql> desc hospital;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ID    | int(9)      | NO   | PRI | 0       |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> create table doctor (patient_ID int(9), name varchar(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc doctor;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| patient_ID | int(9)      | YES  |     | NULL    |       |
+| name       | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> alter table doctor add foreign key (patient_ID) references hospital (ID);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc hospital;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ID    | int(9)      | NO   | PRI | 0       |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc hospital;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ID    | int(9)      | NO   | PRI | 0       |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> desc doctor;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| patient_ID | int(9)      | YES  | MUL | NULL    |       |
+| name       | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)

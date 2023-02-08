@@ -1,0 +1,52 @@
+mysql> Create database college;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc college;
+ERROR 1046 (3D000): No database selected
+mysql> use college;
+Database changed
+mysql> Create table student(Reg_number int(15),Name varchar(20),Gender varchar(17),city varchar(25),Age int(19));
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Reg_number | int(15)     | YES  |     | NULL    |       |
+| Name       | varchar(20) | YES  |     | NULL    |       |
+| Gender     | varchar(17) | YES  |     | NULL    |       |
+| city       | varchar(25) | YES  |     | NULL    |       |
+| Age        | int(19)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.06 sec)
+
+mysql> alter table student add mobile_number int(30),DOB int(25);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DOB int(25)' at line 1
+mysql> alter table student add(mobile_number it(31),DOB int(26);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'it(31),DOB int(26)' at line 1
+mysql> 0
+    -> alter table add mobile_number int(35);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0
+alter table add mobile_number int(35)' at line 1
+mysql> alter table student add mobile_num int(44);
+Query OK, 0 rows affected (0.28 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Reg_number | int(15)     | YES  |     | NULL    |       |
+| Name       | varchar(20) | YES  |     | NULL    |       |
+| Gender     | varchar(17) | YES  |     | NULL    |       |
+| city       | varchar(25) | YES  |     | NULL    |       |
+| Age        | int(19)     | YES  |     | NULL    |       |
+| mobile_num | int(44)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.03 sec)
+
+mysql> drop table student;
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> desc student;
+ERROR 1146 (42S02): Table 'college.student' doesn't exist

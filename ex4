@@ -1,0 +1,59 @@
+mysql> use facultydata;
+Database changed
+mysql> desc facultydata;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| facno    | int(3)      | YES  |     | NULL    |       |
+| facname  | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| DOB      | int(11)     | YES  |     | NULL    |       |
+| DOJ      | int(10)     | YES  |     | NULL    |       |
+| mobileno | int(10)     | YES  |     | NULL    |       |
+| depno    | varchar(4)  | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.07 sec)
+
+mysql> update facultydata
+    -> SET DOJ=16;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> describe facultydata;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| facno    | int(3)      | YES  |     | NULL    |       |
+| facname  | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| DOB      | int(11)     | YES  |     | NULL    |       |
+| DOJ      | int(10)     | YES  |     | NULL    |       |
+| mobileno | int(10)     | YES  |     | NULL    |       |
+| depno    | varchar(4)  | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.06 sec)
+
+mysql> select * from facultydata;
++-------+---------+--------+------+------+----------+-------+
+| facno | facname | gender | DOB  | DOJ  | mobileno | depno |
++-------+---------+--------+------+------+----------+-------+
+|   203 | kasi    | m      |   11 |   16 |   939825 | AI    |
++-------+---------+--------+------+------+----------+-------+
+1 row in set (0.00 sec)
+
+mysql> DELETE FROM facultydata;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> desc facultydata;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| facno    | int(3)      | YES  |     | NULL    |       |
+| facname  | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| DOB      | int(11)     | YES  |     | NULL    |       |
+| DOJ      | int(10)     | YES  |     | NULL    |       |
+| mobileno | int(10)     | YES  |     | NULL    |       |
+| depno    | varchar(4)  | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.06 sec)

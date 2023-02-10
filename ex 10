@@ -1,0 +1,75 @@
+mysql> create database customer;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use customer;
+Database changed
+mysql> create table customer(ID int(10), Name varchar(30), DOJ int(2), salary int(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc customer;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| ID     | int(10)     | YES  |     | NULL    |       |
+| Name   | varchar(30) | YES  |     | NULL    |       |
+| DOJ    | int(2)      | YES  |     | NULL    |       |
+| salary | int(10)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into customer values(2456, "kriti", 25, 100000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into customer values(2457, "priya", 27, 10000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into customer values(2458, "barthi", 15, 250000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into customer values(2455, "harshit", 04, 2000000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from customer;
++------+---------+------+---------+
+| ID   | Name    | DOJ  | salary  |
++------+---------+------+---------+
+| 2456 | kriti   |   25 |  100000 |
+| 2457 | priya   |   27 |   10000 |
+| 2458 | barthi  |   15 |  250000 |
+| 2455 | harshit |    4 | 2000000 |
++------+---------+------+---------+
+4 rows in set (0.00 sec)
+
+mysql> create view customer_view as select Name, Salary from customer;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from customer_view;
++---------+---------+
+| Name    | Salary  |
++---------+---------+
+| kriti   |  100000 |
+| priya   |   10000 |
+| barthi  |  250000 |
+| harshit | 2000000 |
++---------+---------+
+4 rows in set (0.00 sec)
+
+mysql> create index regno on customer(Name);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from customer;
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| customer |          1 | regno    |            1 | Name        | A         |           4 |     NULL | NULL   | YES  | BTREE      |         |               |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+1 row in set (0.01 sec)
+
+mysql> show index from customer;
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| customer |          1 | regno    |            1 | Name        | A         |           4 |     NULL | NULL   | YES  | BTREE      |         |               |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+1 row in set (0.00 sec)

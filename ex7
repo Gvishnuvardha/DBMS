@@ -1,0 +1,72 @@
+mysql> use college_students;
+Database changed
+mysql> desc college_stusents;
+ERROR 1146 (42S02): Table 'college_students.college_stusents' doesn't exist
+mysql> desc college_students;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Regno       | int(3)      | NO   | PRI | 0       |       |
+| Studentname | varchar(15) | YES  |     | NULL    |       |
+| gender      | char(1)     | YES  |     | NULL    |       |
+| Dateofbirth | date        | YES  |     | NULL    |       |
+| Mobileno    | int(10)     | YES  |     | NULL    |       |
+| City        | varchar(15) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> select* from college_students;
+Empty set (0.00 sec)
+
+mysql> use faculty_data;
+Database changed
+mysql> desc faculty_data;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| FacNo    | int(3)      | YES  |     | NULL    |       |
+| FacName  | varchar(15) | YES  |     | NULL    |       |
+| Gender   | varchar(1)  | YES  |     | NULL    |       |
+| DOB      | int(11)     | YES  |     | NULL    |       |
+| DOJ      | int(10)     | YES  |     | NULL    |       |
+| MobileNO | int(10)     | YES  |     | NULL    |       |
+| DeptNo   | varchar(4)  | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> select * from faculty_data;
++-------+---------+--------+------+------+----------+--------+
+| FacNo | FacName | Gender | DOB  | DOJ  | MobileNO | DeptNo |
++-------+---------+--------+------+------+----------+--------+
+|    12 | priya   | f      |   25 |   25 |  5655656 | IT     |
+|    12 | barthi  | f      |   25 |   25 |  5655656 | IT     |
+|    15 | maya    | f      |   15 |    4 |  5655656 | IT     |
+|    11 | kriti   | f      |   11 |   16 |  5655656 | AI     |
++-------+---------+--------+------+------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from faculty_data between 11 and 25;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between 11 and 25' at line 1
+mysql> select * from faculty_data where DOB between 11 and 25;
++-------+---------+--------+------+------+----------+--------+
+| FacNo | FacName | Gender | DOB  | DOJ  | MobileNO | DeptNo |
++-------+---------+--------+------+------+----------+--------+
+|    12 | priya   | f      |   25 |   25 |  5655656 | IT     |
+|    12 | barthi  | f      |   25 |   25 |  5655656 | IT     |
+|    15 | maya    | f      |   15 |    4 |  5655656 | IT     |
+|    11 | kriti   | f      |   11 |   16 |  5655656 | AI     |
++-------+---------+--------+------+------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from faculty_data where DOB between 11 and 15
+    -> select * from faculty_data where DOB between 11 and 15;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from faculty_data where DOB between 11 and 15' at line 2
+mysql> select * from faculty_data where DOB between 15 AND 25;
++-------+---------+--------+------+------+----------+--------+
+| FacNo | FacName | Gender | DOB  | DOJ  | MobileNO | DeptNo |
++-------+---------+--------+------+------+----------+--------+
+|    12 | priya   | f      |   25 |   25 |  5655656 | IT     |
+|    12 | barthi  | f      |   25 |   25 |  5655656 | IT     |
+|    15 | maya    | f      |   15 |    4 |  5655656 | IT     |
++-------+---------+--------+------+------+----------+--------+
+3 rows in set (0.00 sec)

@@ -1,0 +1,47 @@
+mysql> use faculty_data;
+Database changed
+mysql> desc faculty_data;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| FacNo    | int(3)      | YES  |     | NULL    |       |
+| FacName  | varchar(15) | YES  |     | NULL    |       |
+| Gender   | varchar(1)  | YES  |     | NULL    |       |
+| DOB      | int(11)     | YES  |     | NULL    |       |
+| DOJ      | int(10)     | YES  |     | NULL    |       |
+| MobileNO | int(10)     | YES  |     | NULL    |       |
+| DeptNo   | varchar(4)  | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> select * from faculty_data;
++-------+---------+--------+------+------+----------+--------+
+| FacNo | FacName | Gender | DOB  | DOJ  | MobileNO | DeptNo |
++-------+---------+--------+------+------+----------+--------+
+|    12 | priya   | f      |   25 |   25 |  5655656 | IT     |
+|    12 | barthi  | f      |   25 |   25 |  5655656 | IT     |
+|    15 | maya    | f      |   15 |    4 |  5655656 | IT     |
+|    11 | kriti   | f      |   11 |   16 |  5655656 | AI     |
++-------+---------+--------+------+------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee where DOJ=11 and DeptNo="AI";
+ERROR 1146 (42S02): Table 'faculty_data.employee' doesn't exist
+mysql> select * from faculty_data where DOJ=11 and DeptNo="AI";
+Empty set (0.00 sec)
+
+mysql> select * from faculty_data where DOJ=16 and DeptNo="AI";
++-------+---------+--------+------+------+----------+--------+
+| FacNo | FacName | Gender | DOB  | DOJ  | MobileNO | DeptNo |
++-------+---------+--------+------+------+----------+--------+
+|    11 | kriti   | f      |   11 |   16 |  5655656 | AI     |
++-------+---------+--------+------+------+----------+--------+
+1 row in set (0.00 sec)
+
+mysql> select FacName from faculty_data where DOJ=16 and DeptNo="AI";
++---------+
+| FacName |
++---------+
+| kriti   |
++---------+
+1 row in set (0.00 sec)

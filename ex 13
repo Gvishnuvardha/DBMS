@@ -1,0 +1,47 @@
+mysql> use faculty;
+Database changed
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from faculty;
++-------+-----------+--------+------------+------------+-----------+
+| Facno | facname   | gender | DOB        | DOJ        | Mobileno  |
++-------+-----------+--------+------------+------------+-----------+
+| 234   | siddu     | M      | 2004-03-21 | 2023-01-25 | 293348483 |
+| 456   | meghana   | F      | 2005-05-29 | 2024-05-20 | 323255448 |
++-------+-----------+--------+------------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> savepoint sp1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> delete from faculty where facno='234';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from faculty;
++-------+-----------+--------+------------+------------+-----------+
+| Facno | facname   | gender | DOB        | DOJ        | Mobileno  |
++-------+-----------+--------+------------+------------+-----------+
+| 456   | meghana   | F      | 2005-05-29 | 2024-05-20 | 323255448 |
++-------+-----------+--------+------------+------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> rollback sp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sp1' at line 1
+mysql> rollback to sp1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from faculty;
++-------+-----------+--------+------------+------------+-----------+
+| Facno | facname   | gender | DOB        | DOJ        | Mobileno  |
++-------+-----------+--------+------------+------------+-----------+
+| 234   | siddu     | M      | 2004-03-21 | 2023-01-25 | 293348483 |
+| 456   | meghana   | F      | 2005-05-29 | 2024-05-20 | 323255448 |
++-------+-----------+--------+------------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql>
